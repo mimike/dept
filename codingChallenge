@@ -1,0 +1,33 @@
+function getTargetObject() {
+    let priceElement = document.querySelector('[data-test="product-price"]').textContent;
+    return {
+        "price": priceElement,
+        "currency": "USD"
+    };
+}
+
+function signUpClickHandler() {
+    const signUpButtons = document.querySelectorAll('a[href^="/#signup"]');
+    signUpButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            alert(`Clicked button ${index + 1}`);
+        });
+    });
+}
+
+
+let browserClickCookieHandler = function() {
+    let buttons = document.getElementsByClassName('level0 css-1iu1lyr e1wjqk2t1');
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(e) {
+            if (document.cookie.indexOf("browserClick") === -1) {
+                let tabName = e.currentTarget.textContent;
+                document.cookie = `browserClick = ${tabName}`;
+            } else {
+                let tabName1 = e.currentTarget.textContent
+                document.cookie = `browserClick = ${tabName1}`;
+                alert(`Cookie value is ${tabName1}`)
+            }
+        });
+    }
+}
